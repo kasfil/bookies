@@ -1,0 +1,19 @@
+services:
+  database:
+    image: 'postgres:latest'
+    ports:
+      - 15432:5432
+    env_file:
+      - .env
+    networks:
+      - postgres-network
+    volumes:
+      - dbdata:/var/lib/postgresql/data/
+
+volumes:
+  dbdata:
+    name: postgres-bookies-volumes
+
+networks:
+  postgres-network:
+    driver: bridge
